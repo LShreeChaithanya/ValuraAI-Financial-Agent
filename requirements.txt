@@ -1,0 +1,10 @@
+#requirements.txt
+
+streamlit
+langchain
+langchain-google-genai
+requests
+pydantic
+pytest
+fastapi
+uvicorn
