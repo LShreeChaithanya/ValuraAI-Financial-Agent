@@ -1,4 +1,4 @@
-# 💰 Financial Planning Assistant
+# 🤖 Valura AI Financial Planning Assistant
 
 ### _Your AI-powered financial advisor with advanced calculation tools_
 
@@ -16,7 +16,7 @@
 
 ## 🎯 **Project Overview**
 
-The Financial Planning Assistant is an intelligent conversational agent built for **Valura.ai** that helps users create personalized retirement plans through natural language interactions. It combines proven financial formulas with modern AI to deliver clear, actionable financial advice.
+The Financial Planning Assistant is an intelligent conversational agent built for **Valura.ai** that helps users with financial calculations through natural language interactions. It combines proven financial formulas with Google's Gemini 2.0 Flash model to deliver clear, actionable financial calculations.
 
 ### 🚀 **Key Features**
 
@@ -24,33 +24,37 @@ The Financial Planning Assistant is an intelligent conversational agent built fo
 <tr>
 <td width="50%">
 
-#### 🤖 **Intelligent Persona Building**
+#### 🤖 **AI-Powered Chat Interface**
 
-- Asks 5-8 friendly questions
-- Stores user information in memory
-- Builds comprehensive financial profile
+- Natural language financial queries
+- Intelligent tool selection
+- Real-time calculation processing
+- Contextual conversation memory
 
-#### 🧮 **Advanced Formula Engine**
+#### 🧮 **Financial Calculation Tools**
 
 - Future Value & Present Value calculations
 - Annuity computations (FV & PV)
 - Rule of 72 estimates
 - NPER (Number of Periods) calculations
+- Detailed calculation explanations
 
 </td>
 <td width="50%">
 
-#### 💬 **Natural Language Q&A**
+#### 💬 **Interactive UI**
 
-- Understands complex financial questions
-- Provides clear numeric answers
-- Explains mathematical reasoning
+- Streamlit-powered chat interface
+- Visual animations and progress indicators
+- Tool usage detection and feedback
+- Responsive design with custom styling
 
-#### 📊 **Interactive Visualizations**
+#### 🔧 **Backend API**
 
-- Real-time calculation animations
-- Progress indicators for tool usage
-- Responsive chat interface
+- FastAPI REST endpoints
+- Structured request/response handling
+- Error handling and validation
+- Chat history management
 
 </td>
 </tr>
@@ -62,29 +66,111 @@ The Financial Planning Assistant is an intelligent conversational agent built fo
 
 <div align="center">
 
-```mermaid
-graph TB
-    A[👤 User Interface<br/>Streamlit Frontend] --> B[🔄 API Gateway<br/>FastAPI Backend]
-    B --> C[🤖 Financial Agent<br/>LangChain + Gemini]
-    C --> D[🧮 Formula Engine<br/>Financial Tools]
-    C --> E[💾 Chat Memory<br/>Session State]
+### 🎨 **Application Flow**
 
-    subgraph "🔧 Tool Suite"
-        D --> F[📈 Future Value]
-        D --> G[📉 Present Value]
-        D --> H[⏰ Rule of 72]
-        D --> I[💰 Annuities]
-        D --> J[🎯 NPER]
-    end
+```
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                          🌐 STREAMLIT FRONTEND                               │
+├──────────────────────────────────────────────────────────────────────────────┤
+│  👨‍💼 User Input  ──────────►  💬 Chat Interface  ──────────►  🎨 UI Animations │
+│                              │                                              │
+│                              ▼                                              │
+│                    📡 HTTP Request to Backend                               │
+│                         (POST /chat)                                        │
+└──────────────────────────────────────────────────────────────────────────────┘
+                               │
+                               ▼
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                           🔄 FASTAPI BACKEND                                 │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                         ⚡ main.py (API Server)                              │
+│                    ┌─────────────────────────────┐                          │
+│                    │    📝 Request Validation    │                          │
+│                    │    🔄 Chat History Format   │                          │
+│                    │    📤 Response Formatting   │                          │
+│                    └─────────────────────────────┘                          │
+└──────────────────────────────────────────────────────────────────────────────┘
+                               │
+                               ▼
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                        🧠 FINANCIAL AGENT LAYER                              │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                    🤖 financial_agent.py                                     │
+│  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐              │
+│  │  📋 Chat Format │  │  🎯 Agent Build │  │  💭 AI Invoke   │              │
+│  └─────────────────┘  └─────────────────┘  └─────────────────┘              │
+│                               │                                              │
+│                               ▼                                              │
+│              ┌─────────────────────────────────────────┐                     │
+│              │          🌟 Gemini 2.0 Flash           │                     │
+│              │         (via gemini.py)                │                     │
+│              └─────────────────────────────────────────┘                     │
+└──────────────────────────────────────────────────────────────────────────────┘
+                               │
+                               ▼
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                         🧮 CALCULATION TOOLS                                 │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                       📊 tools/formulas.py                                   │
+│                                                                              │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐        │
+│  │ 📈 future_  │  │ 📉 present_ │  │ ⏰ rule_    │  │ 💰 fv_      │        │
+│  │   value     │  │   value     │  │   of_72     │  │   annuity   │        │
+│  └─────────────┘  └─────────────┘  └─────────────┘  └─────────────┘        │
+│                                                                              │
+│  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐                         │
+│  │ 💰 pv_      │  │ 🎯 nper     │  │ 📝 explain_ │                         │
+│  │   annuity   │  │             │  │   calculation│                         │
+│  └─────────────┘  └─────────────┘  └─────────────┘                         │
+└──────────────────────────────────────────────────────────────────────────────┘
+```
 
-    style A fill:#FF6B6B,stroke:#FF5252,color:#fff
-    style B fill:#4ECDC4,stroke:#26A69A,color:#fff
-    style C fill:#45B7D1,stroke:#2196F3,color:#fff
-    style D fill:#96CEB4,stroke:#4CAF50,color:#fff
-    style E fill:#FECA57,stroke:#FF9800,color:#fff
+### 🔄 **Tool Execution Flow**
+
+```
+💬 User Query
+       │
+       ▼
+🤖 Gemini Analysis ────────► 🎯 Tool Detection
+       │                           │
+       ▼                           ▼
+📝 Prompt Processing          🧮 Tool Selection
+       │                           │
+       ▼                           ▼
+🔧 Tool Execution ◄─────────── ⚡ Parameter Mapping
+       │
+       ▼
+📊 Calculation Result
+       │
+       ▼
+💬 Natural Language Response
 ```
 
 </div>
+
+---
+
+## 📁 **Project Structure**
+
+```
+📦 FINANCIAL_PLANNING_APP/
+├── 🔧 src/
+│   ├── 📱 app.py                     # Streamlit Frontend Application
+│   ├── 🤖 financial_agent.py        # Core Agent Logic & Tool Integration
+│   ├── 🌐 gemini.py                 # Google AI Integration & LLM Setup
+│   ├── 📝 prompts.py                # System Prompts & Instructions
+│   └── 🛠️ tools/
+│       ├── 📊 formulas.py            # Financial Calculation Functions
+│       └── 🔧 __init__.py           # Package Initialization
+├── 🚀 app/
+│   └── 📡 api/
+│       └── ⚡ main.py               # FastAPI Backend Server
+├── 🧪 tests/
+├── 📋 requirements.txt              # Python Dependencies
+├── 🔒 .env                         # Environment Variables
+├── 🐍 .python-version              # Python Version Specification
+└── 📖 README.md                    # Project Documentation
+```
 
 ---
 
@@ -143,31 +229,6 @@ graph TB
 </td>
 </tr>
 </table>
-
----
-
-## 📁 **Project Structure**
-
-```
-📦 FINANCIAL_PLANNING_APP/
-├── 🔧 src/
-│   ├── 📱 app.py                     # Streamlit Frontend
-│   ├── 🤖 financial_agent.py        # Main AI Agent Logic
-│   ├── 🌐 gemini.py                 # Google AI Integration
-│   ├── 📝 prompts.py                # System Prompts
-│   └── 🔧 tools/
-│       ├── 📊 formulas.py            # Financial Calculation Tools
-│       └── 🧪 __init__.py
-├── 🚀 app/
-│   └── 📡 api/
-│       └── ⚡ main.py               # FastAPI Backend
-├── 🧪 tests/
-│   └── 🔬 test_all_formulas.py      # Comprehensive Testing
-├── 📋 requirements.txt              # Dependencies
-├── 🔒 .env                         # Environment Variables
-├── 🐍 .python-version              # Python Version
-└── 📖 README.md                    # This File
-```
 
 ---
 
@@ -231,24 +292,24 @@ streamlit run app.py
 
 ---
 
-## 🧮 **Financial Formula Engine**
+## 🧮 **Available Financial Tools**
 
-Our tool suite implements industry-standard financial calculations:
+<div align="center">
 
 <table>
 <tr>
 <td width="50%">
 
-### **🔢 Core Formulas**
+### **🔢 Core Calculations**
 
-| Formula           | Implementation                      |
-| ----------------- | ----------------------------------- |
-| **Future Value**  | `FV = PV × (1 + r)^n`               |
-| **Present Value** | `PV = FV ÷ (1 + r)^n`               |
-| **FV Annuity**    | `FV = PMT × [((1 + r)^n - 1) ÷ r]`  |
-| **PV Annuity**    | `PV = PMT × [1 - (1 + r)^(-n)] ÷ r` |
-| **Rule of 72**    | `Years ≈ 72 ÷ rate%`                |
-| **NPER**          | `n = ln(FV÷PV) ÷ ln(1+r)`           |
+| Tool              | Function          | Formula                             |
+| ----------------- | ----------------- | ----------------------------------- |
+| **Future Value**  | `future_value()`  | `FV = PV × (1 + r)^n`               |
+| **Present Value** | `present_value()` | `PV = FV ÷ (1 + r)^n`               |
+| **FV Annuity**    | `fv_annuity()`    | `FV = PMT × [((1 + r)^n - 1) ÷ r]`  |
+| **PV Annuity**    | `pv_annuity()`    | `PV = PMT × [1 - (1 + r)^(-n)] ÷ r` |
+| **Rule of 72**    | `rule_of_72()`    | `Years ≈ 72 ÷ rate%`                |
+| **NPER**          | `nper()`          | `n = ln(FV÷PV) ÷ ln(1+r)`           |
 
 </td>
 <td width="50%">
@@ -256,63 +317,224 @@ Our tool suite implements industry-standard financial calculations:
 ### **🎯 Use Cases**
 
 - 🏠 **Retirement Planning**
-- 💳 **Investment Analysis**
-- 🎓 **College Savings**
-- 🏡 **Mortgage vs Investment**
-- 📈 **Portfolio Growth**
+- 💳 **Investment Growth Analysis**
+- 🎓 **Education Savings Goals**
+- 🏡 **Mortgage vs Investment Decisions**
+- 📈 **Portfolio Value Projections**
 - ⏰ **Time-to-Goal Calculations**
+- 📊 **Interest Rate Comparisons**
 
 </td>
 </tr>
 </table>
 
+</div>
+
 ---
 
 ## 💬 **Example Interactions**
-
-### **Retirement Planning**
-
-```
-User: "I'm 35, save $1000 a month, expect 6% return—what age can I retire?"
-Assistant: 🔧 Running calculations...
-Result: "Based on your savings plan, you can retire at age 62 with approximately $1.2M.
-         This assumes you need 25x your annual expenses for retirement."
-```
 
 ### **Investment Analysis**
 
 ```
 User: "What's the future value of $50,000 invested at 7% for 20 years?"
-Assistant: 📊 Future Value: $193,484.22 (Principal: $50,000, Rate: 7%, Periods: 20)
+Assistant: 🔧 Running financial calculations...
+Result: Future Value: $193,484.22
+        (Principal: $50,000, Annual Rate: 7%, Time Period: 20 years)
 ```
 
-### **College Savings**
+### **Retirement Planning**
 
 ```
-User: "How much should I save monthly to have $150,000 in 18 years?"
-Assistant: 💰 You need to save $434.85 monthly at 6% annual return to reach $150,000 in 18 years.
+User: "How much do I need to save monthly to have $1 million in 30 years at 6% return?"
+Assistant: 💰 Monthly Payment Required: $1,025.73
+           (Future Value Goal: $1,000,000, Rate: 6%, Periods: 30 years)
+```
+
+### **Quick Estimates**
+
+```
+User: "How long to double my money at 8% interest?"
+Assistant: ⏰ Rule of 72 Calculation: 9 years
+           (72 ÷ 8% = 9 years to double your investment)
 ```
 
 ---
 
-## 🧪 **Testing Framework**
+## 🎨 **UI Features**
 
-### **Unit Tests Coverage**
+<div align="center">
 
-- ✅ All financial formulas tested against known values
-- ✅ Edge cases (zero rates, negative values)
-- ✅ Integration tests for tool chains
-- ✅ End-to-end user scenarios
+<table>
+<tr>
+<td width="50%">
 
-### **Run Tests**
+### **🎭 Visual Feedback**
+
+- 🔄 **Thinking animations** during processing
+- ⚡ **Tool usage indicators** with progress tracking
+- 🎨 **Gradient backgrounds** and modern styling
+- 💫 **Smooth transitions** between states
+- ✅ **Success animations** for completed calculations
+
+### **📱 Interactive Elements**
+
+- 💡 **Example query buttons** for quick testing
+- 🗑️ **Clear chat** functionality
+- 🔄 **Refresh** capabilities
+- 🔌 **Backend status** monitoring
+
+</td>
+<td width="50%">
+
+### **🚀 Smart Features**
+
+- 🎯 **Keyword detection** for tool activation
+- 📊 **Enhanced response formatting**
+- 🛡️ **Error handling** with user-friendly messages
+- 💾 **Session state** management
+- 📝 **Chat history** persistence
+
+### **♿ User Experience**
+
+- 🎨 **Intuitive interface** design
+- 📖 **Clear instructions** and examples
+- 🔍 **Tool availability** display
+- 🎛️ **Control panel** for chat management
+
+</td>
+</tr>
+</table>
+
+</div>
+
+---
+
+## 🔧 **API Endpoints**
+
+### **Chat Endpoint**
+
+```python
+POST /chat
+Content-Type: application/json
+
+{
+    "message": "Calculate future value of $1000 at 5% for 10 years",
+    "chat_history": [
+        {"role": "user", "content": "Hello"},
+        {"role": "assistant", "content": "Hi! I'm here to help with financial calculations."}
+    ]
+}
+```
+
+### **Response Format**
+
+```python
+{
+    "message": "Future Value: $1,628.89 (Principal: $1000, Rate: 5%, Periods: 10)",
+    "chat_history": [...] # Updated history with new conversation
+}
+```
+
+---
+
+## 🔄 **How It Works**
+
+### **1. User Interaction**
+
+- User enters financial question in Streamlit interface
+- UI detects potential tool usage based on keywords
+- Visual animations provide feedback during processing
+
+### **2. Backend Processing**
+
+- FastAPI receives request and validates input
+- `financial_agent.py` formats chat history for LangChain
+- Request forwarded to Gemini 2.0 Flash model
+
+### **3. AI Analysis**
+
+- Gemini analyzes query and determines required tools
+- LangChain binds appropriate financial calculation functions
+- Tool selection happens automatically based on query context
+
+### **4. Tool Execution**
+
+- Selected tools execute with extracted parameters
+- Results returned to AI for natural language formatting
+- Response generated with calculation details and explanations
+
+### **5. Response Delivery**
+
+- Formatted response sent back through API
+- Streamlit displays results with enhanced styling
+- Chat history updated for context in future interactions
+
+---
+
+## 🚀 **Deployment**
+
+### **Development Mode**
 
 ```bash
-# Run all tests
-python -m pytest tests/ -v
+# Terminal 1: Backend
+cd app/api
+uvicorn main:app --reload --host 127.0.0.1 --port 8000
 
-# Run specific test file
-python -m pytest tests/test_all_formulas.py -v
-
-# Run with coverage
-python -m pytest tests/ --cov=src --cov-report=html
+# Terminal 2: Frontend
+cd src
+streamlit run app.py --server.port 8501
 ```
+
+### **Production Considerations**
+
+- Environment variable management for API keys
+- CORS configuration for cross-origin requests
+- Error logging and monitoring
+- Session management and user authentication (if needed)
+
+---
+
+## 🤝 **Contributing**
+
+### **Development Workflow**
+
+1. 🍴 **Fork** the repository
+2. 🌿 **Create** feature branch (`git checkout -b feature/new-tool`)
+3. ✨ **Commit** changes (`git commit -m 'Add new financial tool'`)
+4. 📤 **Push** to branch (`git push origin feature/new-tool`)
+5. 🔄 **Open** Pull Request
+
+### **Code Standards**
+
+- 🐍 **PEP 8** compliance for Python code
+- 📝 **Type hints** for function parameters
+- 🧪 **Test coverage** for new tools
+- 📖 **Documentation** for API changes
+
+---
+
+## 📄 **License**
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+## 🙏 **Acknowledgments**
+
+- 🏢 **Valura.ai** for the project opportunity
+- 🤖 **Google AI** for Gemini 2.0 Flash model access
+- 🦜 **LangChain** for the excellent AI framework
+- 🚀 **Streamlit** for rapid UI development capabilities
+
+---
+
+<div align="center">
+
+### 💰 **Built with ❤️ for Financial Empowerment**
+
+_Helping users make informed financial decisions through intelligent automation_
+
+[🌟 Star this repo](https://github.com/your-username/financial-planning-assistant) • [🐛 Report Bug](https://github.com/your-username/financial-planning-assistant/issues) • [💡 Request Feature](https://github.com/your-username/financial-planning-assistant/issues)
+
+</div>
