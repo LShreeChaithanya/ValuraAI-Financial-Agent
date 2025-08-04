@@ -21,9 +21,12 @@ llm = ChatGoogleGenerativeAI(
     temperature=0,
     max_tokens=None,
     timeout=None,
-    max_retries=2,
+    max_retries=3,
     api_key=GEMINI_API_KEY
     
 )
 
-llm_with_tools = llm.bind_tools([future_value, present_value, rule_of_72, fv_annuity, pv_annuity, explain_calculation, nper])
+llm_with_tools = llm.bind_tools([future_value, present_value, rule_of_72, fv_annuity, pv_annuity, explain_calculation, nper],
+                                tool_choice="auto",)
+
+print(llm_with_tools.invoke("What is the future value of $1000 invested at 5% for 10 years?"))
